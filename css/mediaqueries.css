@@ -10,9 +10,9 @@
   }
 
   /* header */
-  .header-logo img {
-    width: 60%;
-  }
+  /* .header-logo img {
+    width: auto;
+  } */
 
   .topnav a {
     display: none;
