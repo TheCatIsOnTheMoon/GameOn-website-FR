@@ -443,12 +443,15 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+/* footer */
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
 
+/* animations */
 @-webkit-keyframes modalopen {
   from {
     opacity: 0;

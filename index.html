@@ -76,6 +76,8 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
+                  data-error="Your first name should contain only letters, please try again."
                 /><br />
               </div>
               <div class="formData">
@@ -86,6 +88,7 @@
                   id="last"
                   name="last"
                   minlength="2"
+                  required
                 /><br />
               </div>
               <div class="formData">
@@ -95,6 +98,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br />
               </div>
               <div class="formData">
@@ -104,7 +108,11 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
+                  min="1900-01-01"
+                  max="2020-01-01"
                 /><br />
+                <!-- add min max for date verif : format : "year-month-day" -->
               </div>
               <div class="formData">
                 <label for="quantity"
@@ -118,6 +126,7 @@
                   name="quantity"
                   min="0"
                   max="99"
+                  required
                 />
               </div>
               <p class="text-label">Quelles villes ?</p>
