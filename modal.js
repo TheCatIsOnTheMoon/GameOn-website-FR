@@ -9,14 +9,21 @@ function editNav() {
 
 // DOM Elements -------------------------------------------
 
+// modal
 const modalBg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const modalClose = document.querySelectorAll('.close');
 const formData = document.querySelectorAll('.formData');
 
+// input field
+const FirstNameInput = document.getElementById('first');
+const LastNameInput = document.getElementById('last');
 const locationRadioBtn = document.querySelectorAll('.checkbox-input');
 
+// submit
 const submitBtn = document.querySelector('.btn-submit');
+
+
 
 // MODAL --------------------------------------------------
 
@@ -36,30 +43,61 @@ function closeModal() {
 	modalBg.style.display = "none";
   }
 
+// 
 
-// FORM VALIDITY --------------------------------------------
 
+// ERROR MESSAGES --------------------------------------------
+function inputListener (inputField) {
+	inputField.addEventListener('input', () => {
+		inputField.setCustomValidity('');
+		inputField.checkValidity();
+	});
+}
 
-nameInput.addEventListener('input', () => {
-  nameInput.setCustomValidity('');
-  nameInput.checkValidity();
-});
+// error message for first name
+inputListener (FirstNameInput);
 
-nameInput.addEventListener('invalid', () => {
-  if(nameInput.value === '') {
-    nameInput.setCustomValidity('Enter your username!');
+FirstNameInput.addEventListener('invalid', () => {
+  if(FirstNameInput.value === '') {
+    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer votre prénom.';
   } else {
-    nameInput.setCustomValidity('Usernames can only contain upper and lowercase letters. Try again!');
+    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
   }
 });
 
+// error message for first name
+inputListener (LastNameInput);
+
+LastNameInput.addEventListener('invalid', () => {
+  if(LastNameInput.value === '') {
+    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer votre nom.';
+  } else {
+    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+  }
+});
+
+// TODO error message for birthdate
+
+// TODO error message for quantity 
+
+// error message for required radio btn
 submitBtn.addEventListener('click', function (event) {
 	if (locationRadioBtn != "checked") {
 		document.getElementById('radio-error-message').innerHTML = 'Vous devez choisir une option.';
 	};
 })
 
-// TODO error message for required radio btn : 'Vous devez choisir une option.'
+// TODO error message for readAndAccept checkbox
+
+
+// VALID FORM
+
+//   TODO submit btn becomes red when form is complete and valid, stay gry if not
+
+
+
+
+// NOTES - TESTS - OTHER
 
 // required radio button test 1
 
@@ -97,11 +135,11 @@ submitBtn.addEventListener('click', function (event) {
 
 // required radio button test 5
 
-submitBtn.addEventListener('click', function (event) {
-	if (locationRadioBtn != "checked") {
-		document.getElementById('radio-error-message').innerHTML = 'Vous devez choisir une option.';
-	};
-})
+// submitBtn.addEventListener('click', function (event) {
+// 	if (locationRadioBtn != "checked") {
+// 		document.getElementById('radio-error-message').innerHTML = 'Vous devez choisir une option.';
+// 	};
+// })
 
 // required radio button test 6
 
@@ -110,6 +148,3 @@ submitBtn.addEventListener('click', function (event) {
 // 		err.message= 'Vous devez choisir une option.';
 // 	};
 // })
-
-
-//   TODO submit btn becomes red when form is complete and valid, stay gry if not
