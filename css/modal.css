@@ -178,7 +178,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+
+/* TODO moi pas comprendre [data-error] */
+/* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -195,13 +197,32 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
+} */
+
+/* original code comment */
 /* 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
 } */
+
+/* Style changes for invalid data in form : my way*/
+.formData input:focus {
+  border: 2px solid #e54858;
+}
+
+.formData input:focus:invalid {
+  border: 2px solid #e54858;
+}
+
+.formData input:not(:focus):invalid {
+  background-color: #e6cbce;
+  border: 2px solid #e54858;
+  color: $cd-txt--invalid;
+}
+
+/* checkbox */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -266,6 +287,8 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+
+/* close */
 .close {
   position: absolute;
   right: 15px;
@@ -291,6 +314,8 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
+/* button */
 .btn-submit,
 .btn-signup {
   background: #fe142f;
