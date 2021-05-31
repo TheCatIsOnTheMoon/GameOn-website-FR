@@ -16,9 +16,16 @@ const modalClose = document.querySelectorAll('.close');
 const formData = document.querySelectorAll('.formData');
 
 // input field
-const FirstNameInput = document.getElementById('first');
-const LastNameInput = document.getElementById('last');
+const allInputs = document.querySelectorAll('input');
+const allErrorMessages = document.querySelectorAll('.error-message');
+
+const firstNameInput = document.getElementById('first');
+const lastNameInput = document.getElementById('last');
+const emailInput = document.getElementById('email');
+const birthdateInput = document.getElementById('birthdate');
+const quantityInput = document.getElementById('quantity');
 const locationRadioBtn = document.querySelectorAll('.checkbox-input');
+const readAndAcceptCheckbox = document.getElementById('checkbox1');
 
 // submit
 const submitBtn = document.querySelector('.btn-submit');
@@ -47,45 +54,42 @@ function closeModal() {
 
 
 // ERROR MESSAGES --------------------------------------------
-function inputListener (inputField) {
-	inputField.addEventListener('input', () => {
-		inputField.setCustomValidity('');
-		inputField.checkValidity();
+
+// TODO error message for first name
+firstNameInput.addEventListener('invalid', () => {
+	  if(firstNameInput.value === '') {
+	    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer votre prénom.';
+	  } else {
+	    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+	  }
 	});
-}
 
-// error message for first name
-inputListener (FirstNameInput);
+// TODO error message for last name
+	lastNameInput.addEventListener('invalid', () => {
+	  if(lastNameInput.value === '') {
+	    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer votre nom.';
+	  } else {
+	    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+	  }
+	});
 
-FirstNameInput.addEventListener('invalid', () => {
-  if(FirstNameInput.value === '') {
-    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer votre prénom.';
-  } else {
-    document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
-  }
-});
+// TODO error message for email
 
-// error message for first name
-inputListener (LastNameInput);
-
-LastNameInput.addEventListener('invalid', () => {
-  if(LastNameInput.value === '') {
-    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer votre nom.';
-  } else {
-    document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-  }
-});
 
 // TODO error message for birthdate
 
+
 // TODO error message for quantity 
 
-// error message for required radio btn
-submitBtn.addEventListener('click', function (event) {
+
+// TODO error message for required radio btn
+submitBtn.addEventListener('click', function () {
 	if (locationRadioBtn != "checked") {
 		document.getElementById('radio-error-message').innerHTML = 'Vous devez choisir une option.';
-	};
-})
+	} if (locationRadioBtn == "checked") {
+		document.getElementById('radio-error-message').innerHTML = '';
+	}
+	})
 
 // TODO error message for readAndAccept checkbox
 
@@ -98,6 +102,98 @@ submitBtn.addEventListener('click', function (event) {
 
 
 // NOTES - TESTS - OTHER
+
+// allInputs.addEventListener('valid', () => {
+// 	allErrorMessages.innerHTML ='';
+//   });
+
+// IDEE 1
+
+// error message for first name
+// submitBtn.addEventListener('click', function () {
+// 	if (firstNameInput != "valid" && firstNameInput.value === '') {
+// 		document.getElementById('firstName-error-message').innerHTML = 'Veuillez entrer votre prénom.';
+// 	} if (firstNameInput != "valid" && firstNameInput.value !== '') {
+// 		document.getElementById('firstName-error-message').innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+// 	} else {
+// 		document.getElementById('firstName-error-message').innerHTML = '';
+// 	}
+// })
+
+// error message for last name
+// submitBtn.addEventListener('click', function () {
+// 	if (lastNameInput != "valid" && lastNameInput.value === '') {
+// 		document.getElementById('lastName-error-message').innerHTML = 'Veuillez entrer votre nom.';
+// 	} if (lastNameInput != "valid" && lastNameInput.value !== '') {
+// 		document.getElementById('lastName-error-message').innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+// 	} else {
+// 		document.getElementById('lastName-error-message').innerHTML = '';
+// 	}
+// })
+
+// error message for email
+// submitBtn.addEventListener('click', function () {
+// 	if (emailInput != "valid" && emailInput.value === '') {
+// 		document.getElementById('email-error-message').innerHTML = 'Veuillez entrer votre E-mail.';
+// 	} if (emailInput != "valid" && emailInput.value !== '') {
+// 		document.getElementById('email-error-message').innerHTML = 'Veuillez entrer un E-mail valide.';
+// 	} else {
+// 		document.getElementById('email-error-message').innerHTML = '';
+// 	}
+// })
+
+// error message for required radio btn
+// submitBtn.addEventListener('click', function () {
+// 	if (locationRadioBtn != "checked") {
+// 		document.getElementById('radio-error-message').innerHTML = 'Vous devez choisir une option.';
+// 	} if (locationRadioBtn == "checked") {
+// 		document.getElementById('radio-error-message').innerHTML = '';
+// 	}
+// })
+
+// IDEE 2
+
+// function inputListener (inputField) {
+// 	inputField.addEventListener('input', () => {
+// 		inputField.setCustomValidity('');
+// 		inputField.checkValidity();
+// 	});
+// }
+
+// error message for first name
+// firstNameInput.addEventListener('input', () => {
+// 	firstNameInput.setCustomValidity('');
+// 	firstNameInput.checkValidity();
+// });
+
+// inputListener (firstNameInput);
+
+// firstNameInput.addEventListener('invalid', () => {
+//   if(firstNameInput.value === '') {
+//     document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer votre prénom.';
+//   } else {
+//     document.getElementById('firstName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+//   }
+// });
+
+
+
+// error message for last name
+
+// lastNameInput.addEventListener('input', () => {
+// 	lastNameInput.setCustomValidity('');
+// 	lastNameInput.checkValidity();
+// });
+
+// inputListener (lastNameInput);
+
+// lastNameInput.addEventListener('invalid', () => {
+//   if(lastNameInput.value === '') {
+//     document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer votre nom.';
+//   } else {
+//     document.getElementById('lastName-error-message').innerHTML ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+//   }
+// });
 
 // required radio button test 1
 

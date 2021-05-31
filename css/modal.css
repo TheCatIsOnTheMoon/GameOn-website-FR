@@ -2,6 +2,10 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+
+  --color-red: #ff0000;
+  --color-red-lighter: #fe142f;
+  --color-red-lighter-more: #e54858;
 }
 * {
   box-sizing: border-box;
@@ -56,13 +60,13 @@ img {
 }
 
 .topnav a:hover {
-  background-color: #ff0000;
+  background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
 }
 
 .topnav a.active {
-  background-color: #ff0000;
+  background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
 }
@@ -85,7 +89,7 @@ main {
 
 .modal-btn {
   font-size: 145%;
-  background: #fe142f;
+  background: var(--color-red-lighter);
   display: flex;
   margin: auto;
   padding: 2em;
@@ -108,7 +112,7 @@ main {
 /* Modal form */
 
 .button {
-  background: #fe142f;
+  background: var(--color-red-lighter);
   margin-top: 0.5em;
   padding: 1em;
   color: #fff;
@@ -209,21 +213,16 @@ input[data-error]::after {
 
 /* Style changes for invalid data in form : my way*/
 .formData input:focus:invalid {
-  border: none;
-}
-
-.formData input:focus:invalid {
-  border: 2px solid #e54858;
+  border: 2px solid var(--color-red-lighter-more);
 }
 
 .formData input:not(:focus):invalid {
-  background-color: #f0e5e6;
-  border: 2px solid #e54858;
+  border: 2px solid var(--color-red-lighter-more);
 }
 
 /* Error messages */
 .error-message {
-  color: #e54858;
+  color: var(--color-red-lighter-more);
   font-size: 10px;
 }
 
@@ -323,7 +322,7 @@ input[data-error]::after {
 /* button */
 .btn-submit,
 .btn-signup {
-  background: #fe142f;
+  background: var(--color-red-lighter);
   display: block;
   margin: 0 auto;
   border-radius: 7px;
@@ -357,8 +356,8 @@ input[data-error]::after {
   width: 11px;
   height: 11px;
   border: 3px solid transparent;
-  border-bottom-color: #f00;
-  border-left-color: #f00;
+  border-bottom-color: var(--color-red);
+  border-left-color: var(--color-red);
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
@@ -464,7 +463,7 @@ input[data-error]::after {
   padding: 0;
 }
 .copyrights {
-  color: #fe142f;
+  color: var(--color-red-lighter);
   padding: 0;
   font-size: 1rem;
   margin: 60px 0 30px;
