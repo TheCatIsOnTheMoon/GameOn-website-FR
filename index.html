@@ -80,6 +80,9 @@
                   data-error="Your first name should contain only letters, please try again."
                 /><br />
               </div>
+
+              <div class="error-message" id="firstName-error-message"></div>
+
               <div class="formData">
                 <label for="last">Nom</label><br />
                 <input
@@ -91,6 +94,9 @@
                   required
                 /><br />
               </div>
+
+              <div class="error-message" id="lastName-error-message"></div>
+
               <div class="formData">
                 <label for="email">E-mail</label><br />
                 <input
@@ -101,6 +107,9 @@
                   required
                 /><br />
               </div>
+
+              <div class="error-message" id="email-error-message"></div>
+
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br />
                 <input
@@ -112,8 +121,11 @@
                   min="1900-01-01"
                   max="2022-01-01"
                 /><br />
-                <!-- add min max for date verif : format : "year-month-day" -->
+                <!-- TODO add min max for date verif : format : "year-month-day" -->
               </div>
+
+              <div class="error-message" id="date-error-message"></div>
+
               <div class="formData">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
@@ -129,6 +141,9 @@
                   required
                 />
               </div>
+
+              <div class="error-message" id="quantity-error-message"></div>
+
               <p class="text-label">Quelles villes ?</p>
               <div class="formData">
                 <input
@@ -221,6 +236,9 @@
                 </label>
                 <br />
               </div>
+
+              <div class="error-message" id="readAndAccept-error-message"></div>
+
               <input
                 class="btn-submit"
                 type="submit"
