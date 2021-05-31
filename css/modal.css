@@ -208,8 +208,8 @@ input[data-error]::after {
 } */
 
 /* Style changes for invalid data in form : my way*/
-.formData input:focus {
-  border: 2px solid #e54858;
+.formData input:focus:invalid {
+  border: none;
 }
 
 .formData input:focus:invalid {
@@ -219,7 +219,12 @@ input[data-error]::after {
 .formData input:not(:focus):invalid {
   background-color: #f0e5e6;
   border: 2px solid #e54858;
-  color: $cd-txt--invalid;
+}
+
+/* Error messages */
+.error-message {
+  color: #e54858;
+  font-size: 10px;
 }
 
 /* checkbox */
