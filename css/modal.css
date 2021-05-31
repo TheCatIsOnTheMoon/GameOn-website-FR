@@ -217,7 +217,7 @@ input[data-error]::after {
 }
 
 .formData input:not(:focus):invalid {
-  background-color: #e6cbce;
+  background-color: #f0e5e6;
   border: 2px solid #e54858;
   color: $cd-txt--invalid;
 }
