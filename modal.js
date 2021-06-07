@@ -16,6 +16,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData").name;
 
+const submitBtn = document.querySelector("btn-submit");
+
 //
 // launch and close modal
 //
@@ -39,6 +41,10 @@ function closeModal() {
 //
 // form validation
 //
+
+submitBtn.addEventListener("click", () => {
+  formData.setCustomValidity("");
+});
 
 // find data error in form
 let errorItems = formData.find(":invalid");
