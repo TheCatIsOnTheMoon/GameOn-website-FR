@@ -14,9 +14,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelectorAll(".close");
-const formData = document.querySelectorAll(".formData").name;
+const formData = document.querySelectorAll(".formData input");
 
-const submitBtn = document.querySelector("btn-submit");
+const submitBtn = document.querySelector(".btn-submit");
 
 //
 // launch and close modal

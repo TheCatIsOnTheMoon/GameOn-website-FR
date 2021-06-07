@@ -243,6 +243,10 @@ input {
   color: red;
 } */
 
+.formData input:not(:focus):invalid {
+  border: 3px solid #e54858;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
