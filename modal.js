@@ -35,3 +35,21 @@ modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+//
+// form validation
+//
+
+// find data error in form
+let errorItems = formData.find(":invalid");
+
+// iterate through invalid fields list and check each one if there is a pattern mismatch.
+errorItems.each(function (index, node) {
+  let item = $(this);
+  let message =
+    (node.validity.patternMismatch
+      ? node.dataset.patternError
+      : node.dataset.error) || "Invalid value.";
+  // custom validity message
+  item.get(0).setCustomValidity(message);
+});
