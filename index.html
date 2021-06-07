@@ -68,7 +68,9 @@
                   type="text"
                   id="first"
                   name="first"
+                  pattern="[a-zA-Z0-9]+"
                   minlength="2"
+                  maxlength="15"
                   data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."
                   required
                 /><br />
@@ -80,6 +82,9 @@
                   type="text"
                   id="last"
                   name="last"
+                  pattern="[a-zA-Z0-9]+"
+                  minlength="2"
+                  maxlength="15"
                   data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
                   required
                 /><br />
@@ -91,6 +96,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
                   data-error="Vous devez entrer un E-mail valide."
                   required
                 /><br />
@@ -102,6 +108,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"
                   data-error="Vous devez entrer une date de naissance valide."
                   required
                 /><br />
