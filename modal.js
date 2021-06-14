@@ -19,6 +19,15 @@ const formData = document.querySelectorAll(".formData input");
 const submitBtn = document.querySelector(".btn-submit");
 
 //
+// Regex Patterns
+//
+let textPattern = /[a-zA-Z0-9]+/;
+let emailPattern =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let birthdatePattern =
+  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+
+//
 // launch and close modal
 //
 
@@ -41,16 +50,30 @@ function closeModal() {
 function dataErrorVisibility() {}
 
 //
-// Regex
+// form validation
 //
-let textPattern = /[a-zA-Z0-9]+/;
-let emailPattern =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-let birthdatePattern =
-  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+
+function isTextValid(text) {
+  if (text.length < 2) {
+  }
+  if (text === "") {
+  }
+  if (!regex.textPattern(text)) {
+  }
+}
+
+function isEmailValid(email) {}
+
+function isBirthdateValid(birthdate) {}
+
+function isNbrOfTournamentValid(nbrOfTournament) {}
+
+function isCitiesValid(cities) {}
+
+function isAcceptanceCheckboxChecked(acceptanceCheckbox) {}
 
 //
-// form validation
+// Succes Modal Launch and Close
 //
 
 // function getCodeValidation() {
