@@ -28,6 +28,17 @@ const birthdate = document.getElementById("birthdate");
 const NbrOfTournament = document.getElementById("quantity");
 const acceptanceCheckbox = document.getElementById("checkbox1");
 
+// error messages elements
+const firstNameError = document.getElementById("firstName-error-message");
+const lastNameError = document.getElementById("lastName-error-message");
+const emailError = document.getElementById("email-error-message");
+const birthdateError = document.getElementById("birthdate-error-message");
+const NbrOfTournamentError = document.getElementById("quantity-error-message");
+const CitiesError = document.getElementById("cities-error-message");
+const acceptanceCheckboxError = document.getElementById(
+  "checkbox1-error-message"
+);
+
 //
 // launch and close modal
 //
@@ -43,91 +54,125 @@ function launchModal() {
 // close modal event
 modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// launch modal form
+// // launch modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// modalCloseBtn.addEventListener("click", function () {
+//   modalbg.style.display = "none";
+// });
 
 //
 // listen input data
 //
 
-formData.forEach((input) => input.addEventListener("change", formValidation));
-
-//
-// form validation
-//
-
-// Regex Patterns
-const textPattern = /[a-zA-Z0-9]+/;
-const emailPattern =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const birthdatePattern =
-  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
-const numberPattern = /^[0-9]{1,3}$/;
-
-// Show/Hide data error
-function hideDataError(element) {
-  formData.setAttribute("data-error-visible", false);
-}
-
-function showDataError(element) {
-  formData.setAttribute("data-error-visible", true);
-}
-
-// validation action
-function formValidation(formInput) {
-  let validateName = isTextValid(lastName.value);
-}
+submitBtn.addEventListener("click", () => {
+  firstNameInputValidation();
+  lastNameInputValidation();
+  emailInputValidation();
+  birthdateInputValidation();
+  nbrOfTournamentInputValidation();
+  AcceptanceCheckboxInputValidation();
+});
 
 // validation functions
-function isTextValid(text) {
-  if (text.length < 2 || text === "" || !regex.textPattern(text)) {
-    showDataError(lastName);
+function firstNameInputValidation() {
+  if (
+    firstName.value.length < 2 ||
+    firstName.value === "" ||
+    !/[a-zA-Z0-9]+/.test(firstName.value)
+  ) {
+    firstNameError.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+    return false;
+  } else {
+    firstNameError.innerHTML = "";
+    return true;
+  }
+}
+
+function lastNameInputValidation() {
+  if (
+    lastName.value.length < 2 ||
+    lastName.value === "" ||
+    !/[a-zA-Z0-9]+/.test(lastName.value)
+  ) {
+    lastNameError.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     return false;
   }
-  hideDataError(lastName);
+  lastNameError.innerHTML = "";
   return true;
 }
 
-function isEmailValid(email) {
-  if (email === "" || !regex.emailPattern(email)) {
+function emailInputValidation() {
+  if (
+    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      email.value
+    )
+  ) {
+    emailError.innerHTML = "Veuillez entrer un E-mail valide.";
     return false;
   }
+  emailError.innerHTML = "";
   return true;
 }
 
-function isBirthdateValid(birthdate) {
-  if (!regex.birthdatePattern(birthdate)) {
+function birthdateInputValidation() {
+  if (
+    !/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/.test(
+      birthdate.value
+    )
+  ) {
+    birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
   }
+  birthdateError.innerHTML = "";
   return true;
 }
 
-// function isNbrOfTournamentValid(nbrOfTournament) {}
+function nbrOfTournamentInputValidation() {
+  if (NbrOfTournament.value === "") {
+    NbrOfTournamentError.innerHTML =
+      "Veuillez indiquer à combien de tournois GameOn vous avez déjà participé.";
+    return false;
+  }
+  NbrOfTournamentError.innerHTML = "";
+  return true;
+}
 
-// function isCitiesValid(cities) {}
+function AcceptanceCheckboxInputValidation() {
+  if (acceptanceCheckbox.value !== "checked") {
+    acceptanceCheckboxError.innerHTML =
+      "Vous devez accepter les termes et conditions.";
+    return false;
+  }
+  acceptanceCheckboxError.innerHTML = "";
+  return true;
+}
 
-// function isAcceptanceCheckboxChecked(acceptanceCheckbox) {}
+// -------------------------------------------------------------------
 
 //
-// Succes ! Form Validation Message
+// Succes ! FormValidation Message NOT WORKING
 //
 
-let noErrorInForm = true;
+// let noErrorInForm = true;
 
-function hideForm() {
-  formData.forEach((element) => {
-    element.style.display = "none";
-  });
-  submitBtn.style.display = "none";
-}
+// submitBtn.addEventListener("click", launchValidationMessage());
 
-function launchValidationMessage() {
-  validationMessage.style.display = "block";
-}
+// function hideForm() {
+//   formData.forEach((element) => {
+//     element.style.display = "none";
+//   });
+//   submitBtn.style.display = "none";
+// }
 
-if (noErrorInForm) {
-  hideForm();
-  launchValidationMessage();
-}
+// function launchValidationMessage() {
+//   e.preventDefault();
+//   if (noErrorInForm) {
+//     hideForm();
+//     validationMessage.style.display = "block";
+//   }
+// }

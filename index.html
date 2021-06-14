@@ -74,6 +74,10 @@
                   data-pattern-error="Le prénom ne doit contenir que des lettres."
                   required
                 /><br />
+                <p
+                  class="formData error-message"
+                  id="firstName-error-message"
+                ></p>
               </div>
               <div class="formData">
                 <label>Nom</label><br />
@@ -88,6 +92,10 @@
                   data-pattern-error="Le prénom ne doit contenir que des lettres."
                   required
                 /><br />
+                <p
+                  class="formData error-message"
+                  id="lastName-error-message"
+                ></p>
               </div>
               <div class="formData">
                 <label>E-mail</label><br />
@@ -99,6 +107,7 @@
                   data-error="Vous devez entrer un E-mail valide."
                   required
                 /><br />
+                <p class="formData error-message" id="email-error-message"></p>
               </div>
               <div class="formData">
                 <label>Date de naissance</label><br />
@@ -110,6 +119,10 @@
                   data-error="Vous devez entrer une date de naissance valide."
                   required
                 /><br />
+                <p
+                  class="formData error-message"
+                  id="birthdate-error-message"
+                ></p>
               </div>
               <div class="formData">
                 <label
@@ -126,6 +139,11 @@
                   data-error="Indiquez à combien de tournois GameOn vous avez déjà participé"
                   required
                 />
+                <br />
+                <p
+                  class="formData error-message"
+                  id="quantity-error-message"
+                ></p>
               </div>
               <p class="text-label formData">Quelles villes ?</p>
               <div class="formData">
@@ -135,6 +153,8 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  checked
+                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -195,6 +215,8 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <br />
+                <p class="formData error-message" id="cities-error-message"></p>
               </div>
 
               <div class="formData">
@@ -203,7 +225,7 @@
                   type="checkbox"
                   id="checkbox1"
                   checked
-                  data-error="Vous devez vérifier que vous acceptez les termes et conditions."
+                  data-error="Vous devez accepter les termes et conditions."
                   required
                 />
                 <label class="checkbox2-label" for="checkbox1">
@@ -211,6 +233,11 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
+                <p
+                  class="formData error-message"
+                  id="checkbox1-error-message"
+                ></p>
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
