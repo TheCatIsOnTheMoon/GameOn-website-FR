@@ -1,3 +1,4 @@
+// responsive
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -11,12 +12,13 @@ function editNav() {
 // DOM Elements
 //
 
+// general DOM elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelectorAll(".close");
-const formData = document.querySelectorAll(".formData input");
-
+const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
+const validationMessage = document.getElementById("validation-message");
 
 // inputs elements
 const firstName = document.getElementById("first");
@@ -25,15 +27,6 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const NbrOfTournament = document.getElementById("quantity");
 const acceptanceCheckbox = document.getElementById("checkbox1");
-
-//
-// Regex Patterns
-//
-let textPattern = /[a-zA-Z0-9]+/;
-let emailPattern =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-let birthdatePattern =
-  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 
 //
 // launch and close modal
@@ -55,83 +48,86 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-function dataErrorVisibility() {}
+//
+// listen input data
+//
+
+formData.forEach((input) => input.addEventListener("change", formValidation));
 
 //
 // form validation
 //
 
+// Regex Patterns
+const textPattern = /[a-zA-Z0-9]+/;
+const emailPattern =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const birthdatePattern =
+  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+const numberPattern = /^[0-9]{1,3}$/;
+
+// Show/Hide data error
+function hideDataError(element) {
+  formData.setAttribute("data-error-visible", false);
+}
+
+function showDataError(element) {
+  formData.setAttribute("data-error-visible", true);
+}
+
 // validation action
-// if (!isNameValid(lastName.value)) {
-//   lastName.setAttribute("data-error-visible", true);
-//   return false;
-// }
+function formValidation(formInput) {
+  let validateName = isTextValid(lastName.value);
+}
 
 // validation functions
-// function isNameValid(name) {
-//   if (text.length < 2) {
-//     return false;
-//   }
-// if (text === "") {
-// }
-// if (!regex.textPattern(text)) {
-// }
-// }
+function isTextValid(text) {
+  if (text.length < 2 || text === "" || !regex.textPattern(text)) {
+    showDataError(lastName);
+    return false;
+  }
+  hideDataError(lastName);
+  return true;
+}
 
-function isEmailValid(email) {}
+function isEmailValid(email) {
+  if (email === "" || !regex.emailPattern(email)) {
+    return false;
+  }
+  return true;
+}
 
-function isBirthdateValid(birthdate) {}
+function isBirthdateValid(birthdate) {
+  if (!regex.birthdatePattern(birthdate)) {
+    return false;
+  }
+  return true;
+}
 
-function isNbrOfTournamentValid(nbrOfTournament) {}
+// function isNbrOfTournamentValid(nbrOfTournament) {}
 
-function isCitiesValid(cities) {}
+// function isCitiesValid(cities) {}
 
-function isAcceptanceCheckboxChecked(acceptanceCheckbox) {}
-
-//
-// Succes Modal Launch and Close
-//
-
-// function getCodeValidation() {
-//   return document.getElementById("code-validation");
-// }
-
-// document.getElementById("code").addEventListener("input", function (e) {
-//   if (/^CODE-/.test(e.target.value)) {
-//     getCodeValidation().innerText = "Code valide";
-//   } else {
-//     getCodeValidation().innerText = "Code invalide";
-//   }
-// });
+// function isAcceptanceCheckboxChecked(acceptanceCheckbox) {}
 
 //
-// form validation test 2 -
+// Succes ! Form Validation Message
 //
 
-// if (formData.test()) {
-//   formData.setCustomValidity("");
-// } else {
-//   formData.setCustomValidity(node.dataset.error);
-// }
+let noErrorInForm = true;
 
-//
-// form validation test 1 - n0t working
-//
+function hideForm() {
+  formData.forEach((element) => {
+    element.style.display = "none";
+  });
+  submitBtn.style.display = "none";
+}
 
-// submitBtn.addEventListener("click", () => {
-//   formData.setCustomValidity("");
-// });
+function launchValidationMessage() {
+  validationMessage.style.display = "block";
+}
 
-// find data error in form
-// let errorItems = formData.find(":invalid");
-
-// // iterate through invalid fields list and check each one if there is a pattern mismatch.
-// errorItems.each(function (index, node) {
-//   let item = $(this);
-//   let message =
-//     (node.validity.patternMismatch
-//       ? node.dataset.patternError
-//       : node.dataset.error) || "Invalid value.";
-//   // custom validity message
-//   item.get(0).setCustomValidity(message);
-// });
+if (noErrorInForm) {
+  hideForm();
+  launchValidationMessage();
+}
