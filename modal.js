@@ -38,24 +38,52 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+function dataErrorVisibility() {}
+
 //
 // form validation
 //
 
-submitBtn.addEventListener("click", () => {
-  formData.setCustomValidity("");
-});
+// function getCodeValidation() {
+//   return document.getElementById("code-validation");
+// }
+
+// document.getElementById("code").addEventListener("input", function (e) {
+//   if (/^CODE-/.test(e.target.value)) {
+//     getCodeValidation().innerText = "Code valide";
+//   } else {
+//     getCodeValidation().innerText = "Code invalide";
+//   }
+// });
+
+//
+// form validation test 2 -
+//
+
+// if (formData.test()) {
+//   formData.setCustomValidity("");
+// } else {
+//   formData.setCustomValidity(node.dataset.error);
+// }
+
+//
+// form validation test 1 - n0t working
+//
+
+// submitBtn.addEventListener("click", () => {
+//   formData.setCustomValidity("");
+// });
 
 // find data error in form
-let errorItems = formData.find(":invalid");
+// let errorItems = formData.find(":invalid");
 
-// iterate through invalid fields list and check each one if there is a pattern mismatch.
-errorItems.each(function (index, node) {
-  let item = $(this);
-  let message =
-    (node.validity.patternMismatch
-      ? node.dataset.patternError
-      : node.dataset.error) || "Invalid value.";
-  // custom validity message
-  item.get(0).setCustomValidity(message);
-});
+// // iterate through invalid fields list and check each one if there is a pattern mismatch.
+// errorItems.each(function (index, node) {
+//   let item = $(this);
+//   let message =
+//     (node.validity.patternMismatch
+//       ? node.dataset.patternError
+//       : node.dataset.error) || "Invalid value.";
+//   // custom validity message
+//   item.get(0).setCustomValidity(message);
+// });
