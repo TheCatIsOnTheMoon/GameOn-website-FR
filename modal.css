@@ -255,9 +255,9 @@ input[data-error]::after {
   transition: 0.3s;
 }
 
-/*.formData input:not(:focus):invalid {
+.formData input:not(:focus):invalid {
   border: 3px solid #e54858;
-} */
+}
 
 .checkbox-label,
 .checkbox2-label {

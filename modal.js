@@ -76,12 +76,16 @@ submitBtn.addEventListener("click", () => {
   AcceptanceCheckboxInputValidation();
 });
 
+//
 // validation functions
+//
+
+// first name
 function firstNameInputValidation() {
   if (
     firstName.value.length < 2 ||
     firstName.value === "" ||
-    !/[a-zA-Z0-9]+/.test(firstName.value)
+    !/[a-zA-Z0-9]+/.test(firstName.value) // regex
   ) {
     firstNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
@@ -92,11 +96,12 @@ function firstNameInputValidation() {
   }
 }
 
+// last name
 function lastNameInputValidation() {
   if (
     lastName.value.length < 2 ||
     lastName.value === "" ||
-    !/[a-zA-Z0-9]+/.test(lastName.value)
+    !/[a-zA-Z0-9]+/.test(lastName.value) // regex
   ) {
     lastNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
@@ -106,11 +111,12 @@ function lastNameInputValidation() {
   return true;
 }
 
+// email
 function emailInputValidation() {
   if (
-    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
       email.value
-    )
+    ) // Regex to match a valid email address. ex: test@test.com
   ) {
     emailError.innerHTML = "Veuillez entrer un E-mail valide.";
     return false;
@@ -119,11 +125,12 @@ function emailInputValidation() {
   return true;
 }
 
+// birthdate  !!! NON WORKING PROPERLY !!!
 function birthdateInputValidation() {
   if (
-    !/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/.test(
+    !/(?:(09|04|06|11)(\/|-|\.)(0[1-9]|[12]\d|30)(\/|-|\.)((?:19|20)\d\d))|(?:(01|03|05|07|08|10|12)(\/|-|\.)(0[1-9]|[12]\d|3[01])(\/|-|\.)((?:19|20)\d\d))|(?:02(\/|-|\.)(?:(?:(0[1-9]|1\d|2[0-8])(\/|-|\.)((?:19|20)\d\d))|(?:(29)(\/|-|\.)((?:(?:19|20)(?:04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96))|2000))))/.test(
       birthdate.value
-    )
+    ) // regex dd/MM/yyyy format
   ) {
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
@@ -132,6 +139,7 @@ function birthdateInputValidation() {
   return true;
 }
 
+// tournaments
 function nbrOfTournamentInputValidation() {
   if (NbrOfTournament.value === "") {
     NbrOfTournamentError.innerHTML =
@@ -142,6 +150,7 @@ function nbrOfTournamentInputValidation() {
   return true;
 }
 
+// terms acceptance !!! NON WORKING PROPERLY !!!
 function AcceptanceCheckboxInputValidation() {
   if (acceptanceCheckbox.value !== "checked") {
     acceptanceCheckboxError.innerHTML =
@@ -155,7 +164,7 @@ function AcceptanceCheckboxInputValidation() {
 // -------------------------------------------------------------------
 
 //
-// Succes ! FormValidation Message NOT WORKING
+// Succes ! FormValidation Message !!! NON WORKING PROPERLY !!!
 //
 
 // let noErrorInForm = true;
