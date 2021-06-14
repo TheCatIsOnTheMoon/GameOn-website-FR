@@ -18,6 +18,14 @@ const formData = document.querySelectorAll(".formData input");
 
 const submitBtn = document.querySelector(".btn-submit");
 
+// inputs elements
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const NbrOfTournament = document.getElementById("quantity");
+const acceptanceCheckbox = document.getElementById("checkbox1");
+
 //
 // Regex Patterns
 //
@@ -53,14 +61,22 @@ function dataErrorVisibility() {}
 // form validation
 //
 
-function isTextValid(text) {
-  if (text.length < 2) {
-  }
-  if (text === "") {
-  }
-  if (!regex.textPattern(text)) {
-  }
-}
+// validation action
+// if (!isNameValid(lastName.value)) {
+//   lastName.setAttribute("data-error-visible", true);
+//   return false;
+// }
+
+// validation functions
+// function isNameValid(name) {
+//   if (text.length < 2) {
+//     return false;
+//   }
+// if (text === "") {
+// }
+// if (!regex.textPattern(text)) {
+// }
+// }
 
 function isEmailValid(email) {}
 
