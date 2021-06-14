@@ -41,6 +41,15 @@ function closeModal() {
 function dataErrorVisibility() {}
 
 //
+// Regex
+//
+let textPattern = /[a-zA-Z0-9]+/;
+let emailPattern =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let birthdatePattern =
+  /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+
+//
 // form validation
 //
 
