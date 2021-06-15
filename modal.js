@@ -15,7 +15,7 @@ function editNav() {
 // general DOM elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const modalCloseBtn = document.querySelectorAll(".close");
+
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const validationMessage = document.getElementById("validation-message");
@@ -51,21 +51,30 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event
-modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+// // close modal event
+// modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// // launch modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-
-// modalCloseBtn.addEventListener("click", function () {
+// // // launch modal form
+// function closeModal() {
 //   modalbg.style.display = "none";
-// });
+// }
+
+document.getElementById("close").addEventListener("click", function () {
+  modalbg.style.display = "none";
+});
 
 //
 // listen input data
 //
+
+// formData.addEventListener("input", () => {
+//   firstNameInputValidation();
+//   lastNameInputValidation();
+//   emailInputValidation();
+//   birthdateInputValidation();
+//   nbrOfTournamentInputValidation();
+//   AcceptanceCheckboxInputValidation();
+// });
 
 submitBtn.addEventListener("click", () => {
   firstNameInputValidation();
@@ -130,7 +139,7 @@ function birthdateInputValidation() {
   if (
     !/(?:(09|04|06|11)(\/|-|\.)(0[1-9]|[12]\d|30)(\/|-|\.)((?:19|20)\d\d))|(?:(01|03|05|07|08|10|12)(\/|-|\.)(0[1-9]|[12]\d|3[01])(\/|-|\.)((?:19|20)\d\d))|(?:02(\/|-|\.)(?:(?:(0[1-9]|1\d|2[0-8])(\/|-|\.)((?:19|20)\d\d))|(?:(29)(\/|-|\.)((?:(?:19|20)(?:04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96))|2000))))/.test(
       birthdate.value
-    ) // regex dd/MM/yyyy format
+    ) // regex mm/dd/yyyy
   ) {
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
@@ -152,7 +161,7 @@ function nbrOfTournamentInputValidation() {
 
 // terms acceptance !!! NON WORKING PROPERLY !!!
 function AcceptanceCheckboxInputValidation() {
-  if (acceptanceCheckbox.value !== "checked") {
+  if (acceptanceCheckbox.checked === false) {
     acceptanceCheckboxError.innerHTML =
       "Vous devez accepter les termes et conditions.";
     return false;
@@ -167,7 +176,21 @@ function AcceptanceCheckboxInputValidation() {
 // Succes ! FormValidation Message !!! NON WORKING PROPERLY !!!
 //
 
-// let noErrorInForm = true;
+// let noErrorInForm
+
+// submitBtn.addEventListener("click", () => {
+//   if (
+//     firstNameInputValidation &&
+//     lastNameInputValidation &&
+//     emailInputValidation &&
+//     birthdateInputValidation &&
+//     nbrOfTournamentInputValidation &&
+//     AcceptanceCheckboxInputValidation
+//   ) {
+//     noErrorInForm = true;
+//   }
+//   noErrorInForm = false;
+// });
 
 // submitBtn.addEventListener("click", launchValidationMessage());
 
