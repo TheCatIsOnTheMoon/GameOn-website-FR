@@ -12,15 +12,6 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const submitBtn = document.querySelector(".btn-submit");
-const validationMessage = document.getElementById("validation-message");
-
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
-const birthdate = document.getElementById("birthdate");
-const NbrOfTournament = document.getElementById("quantity");
-const acceptanceCheckbox = document.getElementById("checkbox1");
 
 const firstNameError = document.getElementById("firstName-error-message");
 const lastNameError = document.getElementById("lastName-error-message");
@@ -31,6 +22,9 @@ const CitiesError = document.getElementById("cities-error-message");
 const acceptanceCheckboxError = document.getElementById(
   "checkbox1-error-message"
 );
+
+const submitBtn = document.querySelector(".btn-submit");
+const validationMessage = document.getElementById("validation-message");
 
 // Events ---------------------------------------------------------------
 
@@ -59,10 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// FormValidation Message launcher
+submitBtn.addEventListener("click", () => {
+  if (
+    firstNameInputValidation &&
+    lastNameInputValidation &&
+    emailInputValidation &&
+    birthdateInputValidation &&
+    nbrOfTournamentInputValidation &&
+    AcceptanceCheckboxInputValidation
+  ) {
+    e.preventDefault();
+    hideForm();
+    validationMessage.style.display = "block";
+  }
+});
+
+// hide form content function
+function hideForm() {
+  formData.forEach((element) => {
+    element.style.display = "none";
+  });
+  submitBtn.style.display = "none";
+}
+
 // validation functions -------------------------------------------------------
 
 // first name
 function firstNameInputValidation() {
+  const firstName = document.getElementById("first");
   if (
     firstName.value.length < 2 ||
     firstName.value === "" ||
@@ -79,6 +98,7 @@ function firstNameInputValidation() {
 
 // last name
 function lastNameInputValidation() {
+  const lastName = document.getElementById("last");
   if (
     lastName.value.length < 2 ||
     lastName.value === "" ||
@@ -96,7 +116,7 @@ function lastNameInputValidation() {
 function emailInputValidation() {
   if (
     !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
-      email.value
+      document.getElementById("email").value
     ) // Regex to match a valid email address. ex: test@test.com
   ) {
     emailError.innerHTML = "Veuillez entrer un E-mail valide.";
@@ -108,7 +128,7 @@ function emailInputValidation() {
 
 // birthdate
 function birthdateInputValidation() {
-  if (birthdate.value == "") {
+  if (document.getElementById("birthdate").value == "") {
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
   }
@@ -118,7 +138,7 @@ function birthdateInputValidation() {
 
 // tournaments
 function nbrOfTournamentInputValidation() {
-  if (NbrOfTournament.value === "") {
+  if (document.getElementById("quantity").value === "") {
     NbrOfTournamentError.innerHTML =
       "Veuillez indiquer à combien de tournois GameOn vous avez déjà participé.";
     return false;
@@ -129,46 +149,11 @@ function nbrOfTournamentInputValidation() {
 
 // terms acceptance
 function AcceptanceCheckboxInputValidation() {
-  if (acceptanceCheckbox.checked === false) {
+  if (document.getElementById("checkbox1").checked === false) {
     acceptanceCheckboxError.innerHTML =
       "Vous devez accepter les termes et conditions.";
     return false;
   }
   acceptanceCheckboxError.innerHTML = "";
   return true;
-}
-
-// FormValidation Message  -------------------------------------------------------
-
-let noErrorInForm;
-
-submitBtn.addEventListener("click", () => {
-  if (
-    firstNameInputValidation &&
-    lastNameInputValidation &&
-    emailInputValidation &&
-    birthdateInputValidation &&
-    nbrOfTournamentInputValidation &&
-    AcceptanceCheckboxInputValidation
-  ) {
-    noErrorInForm = true;
-  }
-  noErrorInForm = false;
-});
-
-submitBtn.addEventListener("click", launchValidationMessage());
-
-function hideForm() {
-  formData.forEach((element) => {
-    element.style.display = "none";
-  });
-  submitBtn.style.display = "none";
-}
-
-function launchValidationMessage() {
-  e.preventDefault();
-  if (noErrorInForm) {
-    hideForm();
-    validationMessage.style.display = "block";
-  }
 }
