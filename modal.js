@@ -8,19 +8,13 @@ function editNav() {
   }
 }
 
-//
-// DOM Elements
-//
-
-// general DOM elements
+// DOM Elements ----------------------------------------------------------------
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const validationMessage = document.getElementById("validation-message");
 
-// inputs elements
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
@@ -28,7 +22,6 @@ const birthdate = document.getElementById("birthdate");
 const NbrOfTournament = document.getElementById("quantity");
 const acceptanceCheckbox = document.getElementById("checkbox1");
 
-// error messages elements
 const firstNameError = document.getElementById("firstName-error-message");
 const lastNameError = document.getElementById("lastName-error-message");
 const emailError = document.getElementById("email-error-message");
@@ -39,9 +32,7 @@ const acceptanceCheckboxError = document.getElementById(
   "checkbox1-error-message"
 );
 
-//
-// launch and close modal
-//
+// Events ---------------------------------------------------------------
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -51,43 +42,24 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// // close modal event
-// modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
-
-// // // launch modal form
-// function closeModal() {
-//   modalbg.style.display = "none";
-// }
-
+// close modal
 document.getElementById("close").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
-//
-// listen input data
-//
-
-// formData.addEventListener("input", () => {
-//   firstNameInputValidation();
-//   lastNameInputValidation();
-//   emailInputValidation();
-//   birthdateInputValidation();
-//   nbrOfTournamentInputValidation();
-//   AcceptanceCheckboxInputValidation();
-// });
-
-submitBtn.addEventListener("click", () => {
-  firstNameInputValidation();
-  lastNameInputValidation();
-  emailInputValidation();
-  birthdateInputValidation();
-  nbrOfTournamentInputValidation();
-  AcceptanceCheckboxInputValidation();
+// verify input data when the submit btn is clicked (and when DOM is finished loading)
+document.addEventListener("DOMContentLoaded", () => {
+  submitBtn.addEventListener("click", () => {
+    firstNameInputValidation();
+    lastNameInputValidation();
+    emailInputValidation();
+    birthdateInputValidation();
+    nbrOfTournamentInputValidation();
+    AcceptanceCheckboxInputValidation();
+  });
 });
 
-//
-// validation functions
-//
+// validation functions -------------------------------------------------------
 
 // first name
 function firstNameInputValidation() {
@@ -134,13 +106,9 @@ function emailInputValidation() {
   return true;
 }
 
-// birthdate  !!! NON WORKING PROPERLY !!!
+// birthdate
 function birthdateInputValidation() {
-  if (
-    !/(?:(09|04|06|11)(\/|-|\.)(0[1-9]|[12]\d|30)(\/|-|\.)((?:19|20)\d\d))|(?:(01|03|05|07|08|10|12)(\/|-|\.)(0[1-9]|[12]\d|3[01])(\/|-|\.)((?:19|20)\d\d))|(?:02(\/|-|\.)(?:(?:(0[1-9]|1\d|2[0-8])(\/|-|\.)((?:19|20)\d\d))|(?:(29)(\/|-|\.)((?:(?:19|20)(?:04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96))|2000))))/.test(
-      birthdate.value
-    ) // regex mm/dd/yyyy
-  ) {
+  if (birthdate.value === "mm/dd/yyyy") {
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
   }
@@ -159,7 +127,7 @@ function nbrOfTournamentInputValidation() {
   return true;
 }
 
-// terms acceptance !!! NON WORKING PROPERLY !!!
+// terms acceptance
 function AcceptanceCheckboxInputValidation() {
   if (acceptanceCheckbox.checked === false) {
     acceptanceCheckboxError.innerHTML =
@@ -170,41 +138,37 @@ function AcceptanceCheckboxInputValidation() {
   return true;
 }
 
-// -------------------------------------------------------------------
+// FormValidation Message  -------------------------------------------------------
 
-//
-// Succes ! FormValidation Message !!! NON WORKING PROPERLY !!!
-//
+let noErrorInForm;
 
-// let noErrorInForm
+submitBtn.addEventListener("click", () => {
+  if (
+    firstNameInputValidation &&
+    lastNameInputValidation &&
+    emailInputValidation &&
+    birthdateInputValidation &&
+    nbrOfTournamentInputValidation &&
+    AcceptanceCheckboxInputValidation
+  ) {
+    noErrorInForm = true;
+  }
+  noErrorInForm = false;
+});
 
-// submitBtn.addEventListener("click", () => {
-//   if (
-//     firstNameInputValidation &&
-//     lastNameInputValidation &&
-//     emailInputValidation &&
-//     birthdateInputValidation &&
-//     nbrOfTournamentInputValidation &&
-//     AcceptanceCheckboxInputValidation
-//   ) {
-//     noErrorInForm = true;
-//   }
-//   noErrorInForm = false;
-// });
+submitBtn.addEventListener("click", launchValidationMessage());
 
-// submitBtn.addEventListener("click", launchValidationMessage());
+function hideForm() {
+  formData.forEach((element) => {
+    element.style.display = "none";
+  });
+  submitBtn.style.display = "none";
+}
 
-// function hideForm() {
-//   formData.forEach((element) => {
-//     element.style.display = "none";
-//   });
-//   submitBtn.style.display = "none";
-// }
-
-// function launchValidationMessage() {
-//   e.preventDefault();
-//   if (noErrorInForm) {
-//     hideForm();
-//     validationMessage.style.display = "block";
-//   }
-// }
+function launchValidationMessage() {
+  e.preventDefault();
+  if (noErrorInForm) {
+    hideForm();
+    validationMessage.style.display = "block";
+  }
+}
