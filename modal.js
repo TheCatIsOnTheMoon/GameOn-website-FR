@@ -108,7 +108,7 @@ function emailInputValidation() {
 
 // birthdate
 function birthdateInputValidation() {
-  if (birthdate.value === "mm/dd/yyyy") {
+  if (birthdate.value == "") {
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
   }
