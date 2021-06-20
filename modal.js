@@ -138,8 +138,11 @@ function birthdateInputValidation() {
 
 // tournaments
 function nbrOfTournamentInputValidation() {
-  alert(document.getElementById("quantity").value);
-  if (isNaN(document.getElementById("quantity").value)) {
+  // alert(document.getElementById("quantity").value);
+  if (
+    isNaN(document.getElementById("quantity").value) ||
+    document.getElementById("quantity").value === ""
+  ) {
     NbrOfTournamentError.innerHTML =
       "Veuillez indiquer à combien de tournois GameOn vous avez déjà participé.";
     return false;
