@@ -69,9 +69,7 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  maxlength="15"
-                  data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-                  data-pattern-error="Le prénom ne doit contenir que des lettres."
+                  maxlength="20"
                   required
                 /><br />
                 <p
@@ -87,9 +85,7 @@
                   id="last"
                   name="last"
                   minlength="2"
-                  maxlength="15"
-                  data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
-                  data-pattern-error="Le prénom ne doit contenir que des lettres."
+                  maxlength="20"
                   required
                 /><br />
                 <p
@@ -104,7 +100,7 @@
                   type="email"
                   id="email"
                   name="email"
-                  data-error="Vous devez entrer un E-mail valide."
+                  maxlength="20"
                   required
                 /><br />
                 <p class="formData error-message" id="email-error-message"></p>
@@ -116,7 +112,6 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  data-error="Vous devez entrer une date de naissance valide."
                   required
                 /><br />
                 <p
@@ -136,7 +131,7 @@
                   name="quantity"
                   min="0"
                   max="99"
-                  data-error="Indiquez à combien de tournois GameOn vous avez déjà participé"
+                  maxlength="2"
                   required
                 />
                 <br />
