@@ -1,4 +1,4 @@
-// responsive
+// responsive navbar
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -11,8 +11,8 @@ function editNav() {
 // DOM Elements ----------------------------------------------------------------
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 
+const form = document.getElementById("form");
 const firstNameError = document.getElementById("firstName-error-message");
 const lastNameError = document.getElementById("lastName-error-message");
 const emailError = document.getElementById("email-error-message");
@@ -22,9 +22,6 @@ const CitiesError = document.getElementById("cities-error-message");
 const acceptanceCheckboxError = document.getElementById(
   "checkbox1-error-message"
 );
-
-const submitBtn = document.querySelector(".btn-submit");
-const validationMessage = document.getElementById("validation-message");
 
 // Events ---------------------------------------------------------------
 
@@ -43,7 +40,7 @@ document.getElementById("close").addEventListener("click", function () {
 
 // verify input data when the submit btn is clicked (and when DOM is finished loading)
 document.addEventListener("DOMContentLoaded", () => {
-  submitBtn.addEventListener("click", () => {
+  document.querySelector(".btn-submit").addEventListener("click", () => {
     firstNameInputValidation();
     lastNameInputValidation();
     emailInputValidation();
@@ -54,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // FormValidation Message launcher
-submitBtn.addEventListener("click", () => {
+form.addEventListener("submit", () => {
+  e.preventDefault();
   if (
     firstNameInputValidation &&
     lastNameInputValidation &&
@@ -63,19 +61,10 @@ submitBtn.addEventListener("click", () => {
     nbrOfTournamentInputValidation &&
     AcceptanceCheckboxInputValidation
   ) {
-    e.preventDefault();
-    hideForm();
-    validationMessage.style.display = "block";
+    form.style.display = "none";
+    document.getElementById("validation-message").style.display = "block";
   }
 });
-
-// hide form content function
-function hideForm() {
-  formData.forEach((element) => {
-    element.style.display = "none";
-  });
-  submitBtn.style.display = "none";
-}
 
 // validation functions -------------------------------------------------------
 
@@ -90,10 +79,9 @@ function firstNameInputValidation() {
     firstNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     return false;
-  } else {
-    firstNameError.innerHTML = "";
-    return true;
   }
+  firstNameError.innerHTML = "";
+  return true;
 }
 
 // last name
