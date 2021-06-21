@@ -197,6 +197,8 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  min-height: 40rem;
+  position: relative;
 }
 
 label {
@@ -301,8 +303,8 @@ input {
 }
 .close {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 10px;
+  top: 10px;
   width: 32px;
   height: 32px;
   opacity: 1;
@@ -312,7 +314,7 @@ input {
 .close:before,
 .close:after {
   position: absolute;
-  left: 15px;
+  left: 10px;
   content: " ";
   height: 33px;
   width: 3px;
@@ -337,11 +339,20 @@ input {
   border: 0;
 }
 
-#validation-message {
+/* Succes Message */
+.submit-validation {
   display: none;
-  font-size: 1rem;
-  padding: 1rem;
+  position: absolute;
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 2rem;
   color: #fff;
+  text-align: center;
+  margin: auto;
 }
 
 /* custom select styles */
