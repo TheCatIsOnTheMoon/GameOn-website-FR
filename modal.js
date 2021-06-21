@@ -24,7 +24,7 @@ const acceptanceCheckboxError = document.getElementById(
   "checkbox1-error-message"
 );
 
-const submitBtn = document.querySelector(".btn-submit");
+const submitBtn = document.getElementById("btn-submit");
 
 const succesMessage = document.getElementById("validation-message");
 // Events ---------------------------------------------------------------
@@ -73,12 +73,19 @@ function LaunchSuccesMessage(event) {
   ) {
     event.preventDefault();
     form.style.display = "none";
-    succesMessage.style.display = "block";
+    succesMessage.style.display = "flex";
   }
 }
 
 // attach event listener to lauch the succes message (needs to be after the related function)
 form.addEventListener("submit", LaunchSuccesMessage, true);
+
+// close modal and succes message
+document
+  .getElementById("close-btn-validation-message")
+  .addEventListener("click", function () {
+    modalbg.style.display = "none";
+  });
 
 // validation functions -------------------------------------------------------
 

@@ -197,8 +197,6 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
-  min-height: 40rem;
-  position: relative;
 }
 
 label {
@@ -327,7 +325,8 @@ input {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close-message {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -342,8 +341,14 @@ input {
 /* Succes Message */
 .submit-validation {
   display: none;
+  flex-direction: column;
+  position: relative;
+  min-height: 40rem;
+}
+
+.submit-validation p {
   position: absolute;
-  top: 40%;
+  top: 30%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 50%;
@@ -353,6 +358,14 @@ input {
   color: #fff;
   text-align: center;
   margin: auto;
+}
+
+.btn-close-message {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 /* custom select styles */
