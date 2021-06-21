@@ -13,6 +13,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
 const form = document.getElementById("form");
+const formData = document.querySelectorAll(".formData");
 const firstNameError = document.getElementById("firstName-error-message");
 const lastNameError = document.getElementById("lastName-error-message");
 const emailError = document.getElementById("email-error-message");
@@ -23,6 +24,9 @@ const acceptanceCheckboxError = document.getElementById(
   "checkbox1-error-message"
 );
 
+const submitBtn = document.querySelector(".btn-submit");
+
+const succesMessage = document.getElementById("validation-message");
 // Events ---------------------------------------------------------------
 
 // launch modal event
@@ -38,33 +42,43 @@ document.getElementById("close").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
+let isFirstNameValid = false;
+let isLastNameValid = false;
+let isEmailValid = false;
+let isBirthdateValid = false;
+let isNbrOfTournamentValid = false;
+let isAcceptanceCheckboxValid = false;
+
 // verify input data when the submit btn is clicked (and when DOM is finished loading)
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".btn-submit").addEventListener("click", () => {
-    firstNameInputValidation();
-    lastNameInputValidation();
-    emailInputValidation();
-    birthdateInputValidation();
-    nbrOfTournamentInputValidation();
-    AcceptanceCheckboxInputValidation();
+  submitBtn.addEventListener("click", () => {
+    isFirstNameValid = firstNameInputValidation();
+    isLastNameValid = lastNameInputValidation();
+    isEmailValid = emailInputValidation();
+    isBirthdateValid = birthdateInputValidation();
+    isNbrOfTournamentValid = nbrOfTournamentInputValidation();
+    isAcceptanceCheckboxValid = AcceptanceCheckboxInputValidation();
   });
 });
 
-// FormValidation Message launcher
-form.addEventListener("submit", () => {
-  e.preventDefault();
+// function to lauch the succes message
+function LaunchSuccesMessage(event) {
   if (
-    firstNameInputValidation &&
-    lastNameInputValidation &&
-    emailInputValidation &&
-    birthdateInputValidation &&
-    nbrOfTournamentInputValidation &&
-    AcceptanceCheckboxInputValidation
+    isFirstNameValid == true &&
+    isLastNameValid == true &&
+    isEmailValid == true &&
+    isBirthdateValid == true &&
+    isNbrOfTournamentValid == true &&
+    isAcceptanceCheckboxValid == true
   ) {
+    event.preventDefault();
     form.style.display = "none";
-    document.getElementById("validation-message").style.display = "block";
+    succesMessage.style.display = "block";
   }
-});
+}
+
+// attach event listener to lauch the succes message (needs to be after the related function)
+form.addEventListener("submit", LaunchSuccesMessage, true);
 
 // validation functions -------------------------------------------------------
 

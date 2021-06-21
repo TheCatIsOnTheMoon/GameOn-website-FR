@@ -337,8 +337,11 @@ input {
   border: 0;
 }
 
-.submit-validation {
+#validation-message {
   display: none;
+  font-size: 1rem;
+  padding: 1rem;
+  color: #fff;
 }
 
 /* custom select styles */
