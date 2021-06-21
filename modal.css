@@ -55,14 +55,16 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
-  text-decoration: underline white;
+  -webkit-text-decoration: underline white;
+          text-decoration: underline white;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
-  text-decoration: underline white;
+  -webkit-text-decoration: underline white;
+          text-decoration: underline white;
 }
 
 .topnav .icon {
@@ -184,8 +186,10 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -349,10 +353,8 @@ input {
 .submit-validation p {
   position: absolute;
   top: 30%;
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 50%;
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   font-size: 2rem;
   color: #fff;
@@ -364,7 +366,6 @@ input {
   position: absolute;
   bottom: 5%;
   left: 50%;
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
@@ -577,6 +578,16 @@ footer {
 @media screen and (max-width: 540px) {
   .bground {
     background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+@-webkit-keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
   }
 }
 
