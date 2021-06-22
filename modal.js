@@ -53,16 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
 // with condition that all the variables are true and prevent default form submit action
 function LaunchSuccesMessage(event) {
   if (
-    isFirstNameValid == true &&
-    isLastNameValid == true &&
-    isEmailValid == true &&
-    isBirthdateValid == true &&
-    isNbrOfTournamentValid == true &&
-    isAcceptanceCheckboxValid == true
+    isFirstNameValid === true &&
+    isLastNameValid === true &&
+    isEmailValid === true &&
+    isBirthdateValid === true &&
+    isNbrOfTournamentValid === true &&
+    isAcceptanceCheckboxValid === true
   ) {
     event.preventDefault();
     form.style.display = "none";
-    document.getElementById("validation-message").style.display = "flex";
+    return (document.getElementById("validation-message").style.display =
+      "flex");
   }
 }
 
@@ -82,11 +83,7 @@ document
 function firstNameInputValidation() {
   const firstName = document.getElementById("first");
   const firstNameError = document.getElementById("firstName-error-message");
-  if (
-    firstName.value.length < 2 ||
-    firstName.value === "" ||
-    !/[a-zA-Z0-9]+/.test(firstName.value) // regex
-  ) {
+  if (firstName.value.length < 2 || firstName.value === "") {
     firstNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     return false;
@@ -99,11 +96,7 @@ function firstNameInputValidation() {
 function lastNameInputValidation() {
   const lastName = document.getElementById("last");
   const lastNameError = document.getElementById("lastName-error-message");
-  if (
-    lastName.value.length < 2 ||
-    lastName.value === "" ||
-    !/[a-zA-Z0-9]+/.test(lastName.value) // regex
-  ) {
+  if (lastName.value.length < 2 || lastName.value === "") {
     lastNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     return false;
@@ -155,8 +148,6 @@ function nbrOfTournamentInputValidation() {
   NbrOfTournamentError.innerHTML = "";
   return true;
 }
-
-// const CitiesError = document.getElementById("cities-error-message");
 
 // terms acceptance
 function AcceptanceCheckboxInputValidation() {
