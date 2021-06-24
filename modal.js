@@ -8,12 +8,12 @@ function editNav() {
   }
 }
 
-// DOM Elements ----------------------------------------------------------------
+// DOM Elements --------------------------------------------------------
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById("form");
 
-// Events ---------------------------------------------------------------
+// Events --------------------------------------------------------------
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -84,10 +84,12 @@ function firstNameInputValidation() {
   const firstName = document.getElementById("first");
   const firstNameError = document.getElementById("firstName-error-message");
   if (firstName.value.length < 2 || firstName.value === "") {
+    ErrorInputBorder(firstName);
     firstNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     return false;
   }
+  ValidInputBorder(firstName);
   firstNameError.innerHTML = "";
   return true;
 }
@@ -97,55 +99,62 @@ function lastNameInputValidation() {
   const lastName = document.getElementById("last");
   const lastNameError = document.getElementById("lastName-error-message");
   if (lastName.value.length < 2 || lastName.value === "") {
+    ErrorInputBorder(lastName);
     lastNameError.innerHTML =
       "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     return false;
   }
+  ValidInputBorder(lastName);
   lastNameError.innerHTML = "";
   return true;
 }
 
 // email
 function emailInputValidation() {
+  const email = document.getElementById("email");
   const emailError = document.getElementById("email-error-message");
   if (
     !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
-      document.getElementById("email").value
+      email.value
     ) // Regex to match a valid email address. ex: test@test.com
   ) {
+    ErrorInputBorder(email);
     emailError.innerHTML = "Veuillez entrer un E-mail valide.";
     return false;
   }
+  ValidInputBorder(email);
   emailError.innerHTML = "";
   return true;
 }
 
 // birthdate
 function birthdateInputValidation() {
+  const birthdate = document.getElementById("birthdate");
   const birthdateError = document.getElementById("birthdate-error-message");
-  if (document.getElementById("birthdate").value == "") {
+  if (birthdate.value == "") {
+    ErrorInputBorder(birthdate);
     birthdateError.innerHTML = "Veuillez entrer votre date de naissance.";
     return false;
   }
+  ValidInputBorder(birthdate);
   birthdateError.innerHTML = "";
   return true;
 }
 
 // tournaments
 function nbrOfTournamentInputValidation() {
-  const NbrOfTournamentError = document.getElementById(
+  const nbrofTournament = document.getElementById("quantity");
+  const nbrOfTournamentError = document.getElementById(
     "quantity-error-message"
   );
-  // alert(document.getElementById("quantity").value);
-  if (
-    isNaN(document.getElementById("quantity").value) ||
-    document.getElementById("quantity").value === ""
-  ) {
-    NbrOfTournamentError.innerHTML =
+  if (isNaN(nbrofTournament.value) || nbrofTournament.value === "") {
+    ErrorInputBorder(nbrofTournament);
+    nbrOfTournamentError.innerHTML =
       "Veuillez indiquer à combien de tournois GameOn vous avez déjà participé.";
     return false;
   }
-  NbrOfTournamentError.innerHTML = "";
+  ValidInputBorder(nbrofTournament);
+  nbrOfTournamentError.innerHTML = "";
   return true;
 }
 
@@ -161,4 +170,16 @@ function AcceptanceCheckboxInputValidation() {
   }
   acceptanceCheckboxError.innerHTML = "";
   return true;
+}
+
+// error border functions -------------------------------------------------------
+
+// Add a red border to a non valid input
+function ErrorInputBorder(inputID) {
+  inputID.style.borderColor = "#e54858";
+}
+
+// remove border from valid input
+function ValidInputBorder(inputID) {
+  inputID.style.borderColor = "#ffffff";
 }
