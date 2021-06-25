@@ -150,7 +150,7 @@ function nbrOfTournamentInputValidation() {
   if (isNaN(nbrofTournament.value) || nbrofTournament.value === "") {
     ErrorInputBorder(nbrofTournament);
     nbrOfTournamentError.innerHTML =
-      "Veuillez indiquer à combien de tournois GameOn vous avez déjà participé.";
+      "Veuillez indiquer à combien de tournois vous avez participé.";
     return false;
   }
   ValidInputBorder(nbrofTournament);
