@@ -56,7 +56,7 @@ img {
   color: #ffffff;
   border-radius: 15px;
   -webkit-text-decoration: underline white;
-          text-decoration: underline white;
+  text-decoration: underline white;
 }
 
 .topnav a.active {
@@ -64,7 +64,7 @@ img {
   color: #ffffff;
   border-radius: 15px;
   -webkit-text-decoration: underline white;
-          text-decoration: underline white;
+  text-decoration: underline white;
 }
 
 .topnav .icon {
@@ -187,9 +187,9 @@ main {
   width: 100%;
   max-width: 500px;
   -webkit-animation-name: modalopen;
-          animation-name: modalopen;
+  animation-name: modalopen;
   -webkit-animation-duration: var(--modal-duration);
-          animation-duration: var(--modal-duration);
+  animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -235,8 +235,8 @@ input {
   transition: 0.3s;
 }
 
-.formData input:not(:focus):invalid {
-  border: 3px solid #e54858;
+.formData input {
+  border: 3px solid #ffffff;
 }
 
 .checkbox-label,
