@@ -151,6 +151,7 @@ function nbrOfTournamentInputValidation() {
     ErrorInputBorder(nbrofTournament);
     nbrOfTournamentError.innerHTML =
       "Veuillez indiquer à combien de tournois vous avez participé.";
+
     return false;
   }
   ValidInputBorder(nbrofTournament);
